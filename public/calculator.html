@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="calculator.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<title> Calculator</title>
+
+
+
+</head>
+<body>
+<div class ="black">
+<div class="white">
+<h2>Grade Calculator</h2>
+<div class = "lightgray">
+<div class= "act">
+<h3 id = "red"> Activities </h3>
+</div>
+<div id="hide_box" style="display:block;">
+<p> Give grades to the numeric activities: </p>
+
+<!--Give id to the below section and edit it using css-->
+
+
+<table>
+	<tr>
+		<th><div class="bold">Name</div></th>
+		<th><div class="bold">Short Name</div></th>
+		<th><div class="bold">Weight</div></th>
+		<th><div class="bold">Grade</div></th>
+		<th><div class="bold">Percent</div></th>
+        <th><div class="bold">Letter Grade</div></th>
+	</tr>
+    <div class="first">
+	<tr>
+		<td><div class="info"> Activity 1</div></td>
+		<td><div class="info"> A1</div> </td>
+		<td> <div class="input"><input id = "A1weight" class="field" type = "number" name = "A1weight" value = " "> </div></td>
+		<td> <div class="input>"> <input id = "A1grade" class="field" type = "number" name = "A1grade" value = "" oninput="myFunction()">/<input id = "A1grade2" class="field" type = "number" name = "A1grade" value = " " oninput="myFunction()"> </div></td>
+        <td><div class="info"><p id="demo1"></p></div></td>
+        <td><div class="info"><p id="letter1"></p></div></td>
+	</tr>
+</div>
+	<tr>
+		<td><div class="info"> Activity 2 </div></td>
+		<td><div class="info"> A2</div></td>
+		<td> <div class="info"><input id = "A2weight"class="field" type = "number" name = "A2weight" value = " "> </div></td>
+		<td> <input id="A2grade" class="field" type = "number" name = "A2grade" value = " " oninput="myFunction()"> / <input id = "A2grade2" class="field" type = "number" name = "A2grade" value = " " oninput="myFunction()"> </td>
+        <td><div class="info"><p id="demo2"></p></div></td>
+        <td><div class="info"><p id="letter2"></p></div></td>
+	</tr>
+	<tr>
+		<td><div class="info"> Activity 3</div></td>
+		<td><div class="info"> A3 </div></td>
+		<td><div class="info"> <input id = "A3weight" class="field" type = "number" name = "A3weight" value = " "> </div></td>
+		<td> <input id = "A3grade" class="field" type = "number" name = "A3grade" value = " " oninput="myFunction()"> / <input id="A3grade2" class="field" type = "number" name = "A3grade" value = " " oninput="myFunction()"> </td>
+        <td><div class="info"><p id="demo3"></p></div></td>
+        <td><div class="info"><p id="letter3"></p></div></td>
+	</tr>
+	<tr>
+		<td><div class="info"> Activity 4</div></td>
+		<td><div class="info"> A4 </div></td>
+		<td><div class="info"> <input id= "A4weight" class="field" type = "number" name = "A4weight" value = " "></div></td>
+		<td> <input id = "A4grade" class="field" type = "number" name = "A4grade" value = " " oninput="myFunction()">  /  <input id="A4grade2" class="field" type = "number" name = "A4grade" value = " " oninput="myFunction()"> </td>
+        <td><div class="info"><p id="demo4"></p></div></td>
+        <td><div class="info"><p id="letter4"></p></div></td>
+
+	</tr>
+</table>
+
+<h3 id = "red"> Result </h3>
+<p id="demo"></p>
+
+</div>
+<button class="button button2" onclick="Mean()">MEAN</button><button class="button button2" onclick="Weighted()">WEIGHTED</button>
+ <button  class="button button2" onclick="expandtable()">+Activity</button>
+ <button class="button button2" id="red2"> Hide </button>
+
+</div>
+</div>
+<div class="answer">
+</div>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript" src="calculator.js"></script>
+</body>
+</html>
