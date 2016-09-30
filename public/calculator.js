@@ -1,129 +1,152 @@
-function expandtable() {
-  $("tr:last").after('<tr>' +
-                      '<td><div class="info"> Activity '+RowNUM+' </div></td>' +
-                      '<td><div class="info"> A'+RowNUM+'</div> </td>' +
-                      '<td><div class="info"><input id = "A'+RowNUM+'weight"class="field" type = "number" name = "A'+RowNUM+'weight" value = " "> </div></td>' +
-                      '<td> <input id="A'+RowNUM+'grade" class="field" type = "number" name = "A'+RowNUM+'grade" value = " " oninput="myFunction2()"> / <input id = "A'+RowNUM+'grade2" class="field" type = "number" name = "A'+RowNUM+'grade" value = " " oninput="myFunction()"> </td>' +
-
-                    '<td><div class="info"><p id="demo'+RowNUM+'"></p></div></td>'+
-                    '<td><div class="info"><p id="letter'+RowNUM+'"></p></div></td>'+
-
-                      '</tr>');
-  RowNUM++;
-}
-
-function lettergrade(answer){
-    var grade;
-    if ((answer*100) >= 95){
-        grade = "A+";
+var RowNumber = 5;
+function percentage(){
+  for (i = 1; i < RowNumber; i++){
+    var x = document.getElementById('input'+i+'.1grade').value;
+    var y = document.getElementById('input'+i+'.2grade').value;
+    var solution = Math.round((x/y) * 100);
+    if (isNaN(solution)){
+      solution = "";
+      continue;
     }
-    else if ((answer*100) >= 90 && (answer*100) <= 94){
-        grade = "A";
+    else if (isFinite (solution)==false) {
+      solution = "";
+      continue;
     }
-    else if ((answer*100) >= 85 && (answer*100) <= 89){
-        grade= "A-";
+    else if (solution < 0){
+      solution = "";
+      continue;
     }
-    else if ((answer*100) >= 80 && (answer*100) <= 84){
-        grade = "B+";
+    else {
+      document.getElementById("percent"+i).innerHTML = solution + "%";
     }
-    else if ((answer*100) >= 75 && (answer*100) <= 79){
-        grade = "B";
-    }
-    else if ((answer*100) >= 70 && (answer*100) <= 74){
-        grade= "B-";
-    }
-     else if ((answer*100) >= 65 && (answer*100) <= 69){
-        grade= "C+";
-    }
-    else if ((answer*100) >= 60 && (answer*100) <= 64){
-        grade = "C";
-    }
-    else if ((answer*100) >= 55 && (answer*100) <= 59){
-        grade= "C-";
-    }
-    else if ((answer*100) >= 50 && (answer*100) <= 54){
-        grade= "D";
-    }
-    else if ((answer*100) < 49){
-         grade= "F";
-    }
-return grade;
-
-}
-var RowNUM = 5;
-function myFunction(){
-    for (i = 1; i < RowNUM; i++){
-        var x = document.getElementById("A"+i+"grade").value;
-        var y = document.getElementById("A"+i+"grade2").value;
-        var ans = x/y;
-        if (isNaN(ans)){
-        ans = ""    }
-        else if (isEmpty(document.getElementById("A"+i+"grade").value)==0 || isEmpty(document.getElementById("A"+i+"grade2").value)==0){
-            document.getElementById("letter"+i).innerHTML = "";
-            document.getElementById("demo"+i).innerHTML = "";
-        }
-        else{
-            document.getElementById("demo"+i).innerHTML = ((ans*100).toFixed(2))+ "%";
-            document.getElementById("letter"+i).innerHTML = lettergrade(ans);}
-    }
-	return ans;}
-
-
-function Mean() {
-    var ans = 0;
-    var den =0;
-    var tagh;
-    for (i=1; i<RowNUM; i++){
-        if (isEmpty(document.getElementById("A"+i+"grade").value)==0 || isEmpty(document.getElementById("A"+i+"grade2").value)==0){
-            tagh = 0;
-        }
-        else{
-            var x = document.getElementById("A"+i+"grade").value;
-            var y = document.getElementById("A"+i+"grade2").value;
-            tagh = x/y
-            den = den +1;
-        }
-        ans = ans + tagh;
-    }
-    document.getElementById("demo").innerHTML =  (((ans/den)*100).toFixed(2)) + "/100";
-}
-
-function Weighted(){
-    var ans = 0;
-    var den =0;
-    var tagh;
-     for (i=1; i<RowNUM; i++){
-        if (isEmpty(document.getElementById("A"+i+"grade").value)==0 || isEmpty(document.getElementById("A"+i+"grade2").value)==0){
-            tagh = 0;
-        }
-        else{
-            var x = document.getElementById("A"+i+"grade").value;
-            var y = document.getElementById("A"+i+"grade2").value;
-            var z = parseInt(document.getElementById("A"+i+"weight").value);
-            tagh = (x/y)*z
-            den = den +z;
-        }
-        ans = ans + tagh;
-    }
-    document.getElementById("demo").innerHTML = (((ans/den)*100).toFixed(2)) + "/100";
 
 
 }
-
-
-function isEmpty(str) {
-    if (!str || 0 === str.length){
-    	return 0;
-    }
-    else{
-    	return 1;
-    }
 }
 
 
-$( "#red2" ).click(function() {
-    $( "#hide_box" ).toggle( "slow", function() {
 
-  });
 
-});
+// function percentage (){
+//   var x = document.getElementById('input1.1grade').value;
+//   var y = document.getElementById('input1.2grade').value;
+//   var solution = (x/y) * 100;
+//
+//   if (isNaN(solution) || (isFinite (solution)==false) || solution < 0){
+//     solution = "";
+//   }
+//
+//
+//   solution = Math.round (solution);
+//   document.getElementById("percent1").innerHTML = solution + "%";
+//   return solution;
+//
+// }
+//
+// function percentage2(){
+//   var x = document.getElementById('input2.1grade').value;
+//   var y = document.getElementById('input2.2grade').value;
+//   var solution = (x/y) * 100;
+//
+//   if (isNaN(solution) || (isFinite (solution)==false) || solution < 0){
+//     solution = "";
+//   }
+//
+//
+//   solution = Math.round (solution);
+//
+//   document.getElementById("percent2").innerHTML = solution + "%";
+//   return solution;
+// }
+//
+// function percentage3(){
+//   var x = document.getElementById('input3.1grade').value;
+//   var y = document.getElementById('input3.2grade').value;
+//   var solution = (x/y) * 100;
+//
+//
+//
+//   if (isNaN(solution) || (isFinite (solution)==false) || solution < 0){
+//     solution = "";
+//   }
+//
+//   solution = Math.round (solution);
+//
+//   document.getElementById("percent3").innerHTML = solution + "%";
+//   return solution;
+// }
+//
+// function percentage4(){
+//   var x = document.getElementById('input4.1grade').value;
+//   var y = document.getElementById('input4.2grade').value;
+//   var solution = (x/y) * 100;
+//
+//   if (isNaN(solution) || (isFinite (solution)==false) || solution < 0){
+//     solution = "";
+//   }
+//
+//   solution = Math.round (solution);
+//
+//   document.getElementById("percent4").innerHTML = solution + "%";
+//   return solution;
+// }
+
+function mean(){
+  var count = 0;
+  var total = 0;
+  for(i=1; i < RowNumber; i++){
+   var x = document.getElementById("input"+i+".1grade").value;
+   var y = document.getElementById("input"+i+".2grade").value;
+   var solution = x/y;
+   if( isFinite(solution) == false || solution < 0 || isNaN(solution)) {
+     document.getElementById("percent"+i).innerHTML = "";
+     continue;
+   }
+   var total = total + solution;
+   count ++;
+ }
+ total = total / count;
+ total = total*100;
+ total = Math.round(total);
+ document.getElementById("total_").innerHTML = "Total MEAN is: "+total+"%";
+}
+
+function weight(){
+  var total = 0;
+  var weightTotal = 0;
+  for(i=1; i < RowNumber; i++){
+    var x = document.getElementById("input"+i+".1grade").value;
+    var y = document.getElementById("input"+i+".2grade").value;
+    var z = document.getElementById("input"+i+"weight").value;
+
+    var weight = (x/y)*z
+    var weightTotal = weightTotal + parseFloat(z);
+    var total = total + weight;
+
+    if(isNaN(weight) || isFinite(weight) == false || weight < 0) {
+      continue;
+
+  }
+  var final = total / weightTotal;
+  final = final * 100;
+  document.getElementById("weight_").innerHTML = "Total WEIGHT is: " + final + "/100";
+  if (isNaN(final)){
+  document.getElementById("weight_").innerHTML = "Need Weight Input";
+  }
+  }
+}
+
+function remove(){
+  if ( RowNumber == 1) {
+    alert("MUST HAVE 1 ASSIGNENT");
+    return;
+  }
+  var table = document.getElementById("mytable");
+  table.deleteRow(RowNumber-1);
+  RowNumber--;
+}
+
+function newRow(){
+  $("tr:last").after('<tr><td>Activity '+RowNumber+'</td><td>A'+RowNumber+'</td><td> <input id="input'+RowNumber+'weight" type="number"> </td><td> <input id="input'+RowNumber+'.1grade" type="number" oninput="percentage()" > / <input id="input'+RowNumber+'.2grade" type="number" oninput="percentage()" > </td><td> <p id="percent'+RowNumber+'"> </p> </td></tr>');
+  RowNumber++;
+}
